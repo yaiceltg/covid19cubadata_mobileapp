@@ -64,17 +64,6 @@ class StatisticsModel {
     'Desconocido': 0
   };
 
-  // Map<String, int> contagios() {
-  //   Map<String, int> contagios = {
-  //     'importado': 0,
-  //     'introducido': 0,
-  //     'autoctono': 0,
-  //     'desconocido': 0
-  //   };
-
-  //   return contagios;
-  // }
-
   void buildReports() {
     this.casos.dias.forEach((str, day) {
       if (day.diagnosticados != null) {
@@ -126,13 +115,14 @@ class StatisticsModel {
         }
 
         if (day.evacuadosNumero != null) {
-          this.resume['Recuperados'] += day.evacuadosNumero;
+          this.resume['Recuperados'] += day.recuperadosNumero;
         }
 
        this.resume['Activos'] = this.resume['Diagnosticados'] - this.resume['Muertes'] - this.resume['Evacuados'];
       }
     });
   }
+
 }
 
 class Casos {

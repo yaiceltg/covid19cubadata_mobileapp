@@ -92,6 +92,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     _buildChartBySex(context, state.statistics.sex),
                     _buildChartByContagion(context, state.statistics.contagios),
                     _buildDistributionByRange(context),
+                    _buildFooter(context, state.statistics.casos),
                   ],
                 ),
               );
@@ -416,6 +417,28 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             ),
           ],
         ));
+  }
+
+  _buildFooter(BuildContext context, Casos casos){
+    Dia last;
+    
+    casos.dias.forEach((s, day) {
+      last = day;
+    });
+
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Column(
+        children: <Widget>[
+          Text('Datos correspondientes a ${last.fecha}.'),
+          SizedBox(height: 12,),
+          Text('Estos se actualizan a partir de la información oficial del MINSAP.'),
+          SizedBox(height: 12,),
+          Text('Los datos se informan por las autoridades al día siguiente.'),
+          SizedBox(height: 12,),
+        ],
+      ),
+    );
   }
 }
 
